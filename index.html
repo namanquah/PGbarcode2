@@ -2,11 +2,6 @@
 
 <html>
 <head>
-<script src="phonegap.js"></script>
-<script src="cordova.js"></script>
-<script type="text/javascript" src="js/app.js"></script>
-<script src="barcodescanner.js"></script>
-
 	
 <link rel="stylesheet" href="jqm/jquery.mobile-1.4.0.min.css">
 <script src="jqm/jquery-1.11.0.min.js"></script>
@@ -22,6 +17,16 @@
   </div>
 
   <div data-role="content">
+		  <div id="deviceready" class="blink">
+                <p class="event listening">Connecting to Device</p>
+                <p class="event received">Device is Ready</p>
+            </div>
+            <p><a href="#" data-role="button"  id="scan">SCAN</a></p>
+            <p><a href="#" data-role="button"  id="encode">ENCODE</a></p>
+            <p id="info"></p>
+
+
+
    <p>
     <button id="startScan">Start Scan</button>
     </p>
@@ -34,9 +39,13 @@
     <h1>Ashesi MWC - composite Example</h1>
   </div>
 </div> 
-<script>
-document.addEventListener("deviceready", init, false);
-</script>
+   <script type="text/javascript" src="cordova.js"></script>
+        <script type="text/javascript" src="barcodescanner.js"></script>
+        <script type="text/javascript" src="childbrowser.js"></script>
+        <script type="text/javascript" src="js/index.js"></script>
+        <script type="text/javascript">
+            app.initialize();
+        </script>
 
 
 
@@ -45,27 +54,3 @@ document.addEventListener("deviceready", init, false);
 </body>
 </html>
 
-
-<!-- this script is for the offlines storage demo -->
-<script>
-$('#barcodescanner').click(function(){
-alert('clicked');
-
- cordova.plugins.barcodeScanner.scan(
-      function (result) {
-          alert("We got a barcode\n" +
-                "Result: " + result.text + "\n" +
-                "Format: " + result.format + "\n" +
-                "Cancelled: " + result.cancelled);
-      }, 
-      function (error) {
-          alert("Scanning failed: " + error);
-      }
-   );
-
-
-});
-
-
-
-  </script>
